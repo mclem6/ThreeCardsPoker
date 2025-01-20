@@ -1,0 +1,41 @@
+
+.border {
+	-fx-background-image: url("/images/gree_background.jpg");
+	-fx-background-color: rgb(56, 56, 244); 
+	/* -fx-background-image: url("/images/wp12926211-4k-poker-wallpapers.jpg");
+	-fx-background-size: cover; */
+}
+	
+#hbox {
+	-fx-padding: 20; 
+}
+
+#vbox {
+	-fx-padding: 20;
+	-fx-spacing: 20; 
+	/* -fx-background-color: #ffffff;   */
+	-fx-max-width: 650px;  
+    -fx-max-height: 350px;
+	-fx-font-size: 40px;
+
+}
+
+.button{
+	-fx-pref-width: 100px;
+	-fx-pref-height: 50px;
+	-fx-font-size: 16px;
+	-fx-padding: 5px 15px; 
+}
+
+#playBtn {
+	-fx-background-color: #00D704;
+}
+
+#exitBtn {
+	-fx-background-color: #FF0000;
+}
+
+#menuBar {
+	-fx-border-height: 10px;
+}
+

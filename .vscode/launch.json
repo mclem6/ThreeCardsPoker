@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "JavaFXTemplate",
+            "request": "launch",
+            "mainClass": "JavaFXTemplate",
+            "projectName": "FXTemplatePoker"
+        },
+        {
+            "vmArgs": "--module-path /Users/mclem/Downloads/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml"
+        }
+    ]
+}

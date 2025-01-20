@@ -1,0 +1,81 @@
+.border {
+	-fx-background-image: url("/images/gree_background.jpg");
+}
+
+#dealerName{
+	-fx-background-color: #0909A6;
+	-fx-max-width: 100px;
+	-fx-alignment: center;
+	-fx-padding: 10px;
+}
+
+#dealerBox {
+	-fx-spacing: 30px;
+	-fx-padding: 20px;
+
+}
+
+
+.playerArea{
+	-fx-spacing: 10px;
+	-fx-padding: 0px 50px 50px 50px;
+}
+
+.playerOptions{
+
+	-fx-background-color: white; 
+	-fx-width: 225px;
+	-fx-height: 100px;
+	-fx-padding: 20px;
+	-fx-spacing: 10px;
+	-fx-align: right; 
+
+
+}
+
+.control_button{
+	-fx-pref-width: 20px;
+	-fx-pref-height: 20px;
+	-fx-font-size: 12px;
+
+}
+
+
+.bet_button{
+	-fx-background-color: #00D704;
+	-fx-pref-width: 75px;
+	-fx-pref-height: 15px;
+	-fx-font-size: 12px;
+}
+
+.playWager_button{
+	-fx-background-color: #00D704;
+	-fx-pref-width: 125px;
+	-fx-pref-height: 15px;
+	-fx-font-size: 12px;
+}
+
+.fold_button{
+	-fx-background-color: #FF0000;
+	-fx-pref-width: 100px;
+	-fx-pref-height: 15px;
+	-fx-font-size: 12px;
+}
+
+
+
+
+.playerBank{
+	-fx-background-color: #0909A6;
+	-fx-padding: 10px;
+}
+
+
+.hand{
+	-fx-spacing: 20px;
+	-fx-alignment: center;
+}
+
+#game_info {
+	-fx-pref-height: 300px;
+}
