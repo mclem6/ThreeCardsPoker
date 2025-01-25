@@ -3,6 +3,8 @@ import java.util.Collections;
 
 public class ThreeCardLogic{
 
+
+
     //0 high card
     //1 straight flush
     //2 three of a kind
@@ -33,7 +35,7 @@ public class ThreeCardLogic{
 
        }
 
-       //check if stright flush
+       //check if straight flush
        if(is_flush & is_straight){  
             return 1;
        } 
@@ -80,10 +82,11 @@ public class ThreeCardLogic{
             case 1:
                 return bet * 41;
             default:
+                 
                 break;
         }
 
-        return 0;
+        return (-1 * bet);
     }
 
 
@@ -103,4 +106,14 @@ public class ThreeCardLogic{
         return 2;
     }
 
+
+
+
+
 }
+
+    
+
+
+
+

@@ -131,7 +131,7 @@ public class MyController implements Initializable{
 
 	public void update_UI_result(){
 
-		//show cards
+		    //show cards
 			update_p1_card_UI();
 			update_p2_card_UI();
 
@@ -141,13 +141,20 @@ public class MyController implements Initializable{
 
 
 			//wait listview
-			game_info.getItems().add(String.valueOf(game.p1.totalWinnings));
-			game_info.getItems().add(String.valueOf(game.p2.totalWinnings));
+			//comapring hands result 
+			game_info.getItems().add("PLAYER 1" + game.compareHands_str(game.dealer, game.p1));
+			game_info.getItems().add("PLAYER 2" + game.compareHands_str(game.dealer, game.p2));
+
+			//pairplus results
+			game_info.getItems().add("Player 1 " + game.pp_result_str(game.p1));
+			game_info.getItems().add("Playr 2 " + game.pp_result_str(game.p2));
+		
 
 			//wait 3 seconds
 
 			//reset game UI
 			play_again_button.setDisable(false);
+
 
 
 	}
@@ -191,6 +198,22 @@ public class MyController implements Initializable{
 		
 	}
 
+	public void reset_card_UI(){
+		dealercard1.setImage(new Image("/images/cardBack.png"));
+		dealercard2.setImage(new Image("/images/cardBack.png"));
+		dealercard3.setImage(new Image("/images/cardBack.png"));
+
+		player1card1.setImage(new Image("/images/cardBack.png"));
+		player1card2.setImage(new Image("/images/cardBack.png"));
+		player1card3.setImage(new Image("/images/cardBack.png"));
+
+		player2card1.setImage(new Image("/images/cardBack.png"));
+		player2card2.setImage(new Image("/images/cardBack.png"));
+		player2card3.setImage(new Image("/images/cardBack.png"));
+		
+
+	}
+
 	//press play button action
 	public void pressPlay(ActionEvent e)throws IOException{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/playScene.fxml"));
@@ -202,7 +225,7 @@ public class MyController implements Initializable{
 		//initiliaze game
 		myctr.game = new Game();
 
-		myctr.game_info.getItems().add("game starting");
+		myctr.game_info.getItems().add("game starting, select ante and pairplus the press BET");
 
 
 
@@ -212,6 +235,48 @@ public class MyController implements Initializable{
 		Platform.exit();
 
 	}	
+
+	public void reset(){
+		//reset p1 buttons disable
+		bet1.setDisable(false);
+		playWager1.setDisable(true);
+		fold1.setDisable(true);
+		incButtonAnte1.setDisable(false);
+		decButtonAnte1.setDisable(false);
+		incButtonPP1.setDisable(false);
+		decButtonPP1.setDisable(false);
+		player1Ante.setDisable(false);
+		player1PairPlus.setDisable(false);
+
+		//reset p2 buttons disable
+		bet2.setDisable(false);
+		playWager2.setDisable(true);
+		fold2.setDisable(true);
+		incButtonAnte2.setDisable(false);
+		decButtonAnte2.setDisable(false);
+		incButtonPP2.setDisable(false);
+		decButtonPP2.setDisable(false);
+		player2Ante.setDisable(false);
+		player2PairPlus.setDisable(false);
+
+		//disbale play again button
+		play_again_button.setDisable(true);
+
+		//reset players bets
+		game.p1.reset_bet();
+		game.p2.reset_bet();
+
+		//reset cards UI
+		reset_card_UI();
+
+		//reset bet made
+		game.p1.bet_set= false;
+		game.p2.bet_set= false;
+
+
+		//update listview
+		game_info.getItems().add("game starting, select ante and pairplus the press BET");
+	}
 
 
 	// -------- PLAYER 1 ------------
@@ -257,17 +322,17 @@ public class MyController implements Initializable{
 
 		//update player's info
 		game.p1_play_wager_made();
+	
 
 		//check to see if p2 has selected
 		if(game.p2.bet_set){
 			
 			update_UI_result();
-
-
+		} else{
+			
+			game_info.getItems().add("waiting for player 2...");
 
 		}
-
-
 
 	}
 
@@ -355,6 +420,10 @@ public class MyController implements Initializable{
 		if(game.p1.bet_set){
 
 			update_UI_result();
+		} else{
+			
+			game_info.getItems().add("waiting for player 1...");
+
 		}
 
 	}
@@ -396,31 +465,30 @@ public class MyController implements Initializable{
 	}
 
 	public void play_again(ActionEvent e) throws IOException{
+		reset();
+	}
 
-		//reset p1 buttons disable
-		bet1.setDisable(false);
-		playWager1.setDisable(true);
-		fold1.setDisable(true);
-		incButtonAnte1.setDisable(false);
-		decButtonAnte1.setDisable(false);
-		incButtonPP1.setDisable(false);
-		decButtonPP1.setDisable(false);
-		player1Ante.setDisable(false);
-		player1PairPlus.setDisable(false);
+	public void refresh (ActionEvent e) throws IOException{
 
-		//reset p2 buttons disable
-		bet2.setDisable(false);
-		playWager2.setDisable(true);
-		fold2.setDisable(true);
-		incButtonAnte2.setDisable(false);
-		decButtonAnte2.setDisable(false);
-		incButtonPP2.setDisable(false);
-		decButtonPP2.setDisable(false);
-		player2Ante.setDisable(false);
-		player2PairPlus.setDisable(false);
+		//pop out window asking user if sure
 
-		play_again_button.setDisable(true);
+		reset();
+
+		//reset banks
+		game = new Game();
+
+		//reset bank UI
+		p1bank.setText(String.valueOf(game.p1.totalWinnings));
+		p2bank.setText(String.valueOf(game.p2.totalWinnings));
+
+		//reset bet amount UI
+		player1Ante.setText(String.valueOf(5));
+		player2Ante.setText(String.valueOf(5));
+		player1PairPlus.setText(String.valueOf(5));
+		player2PairPlus.setText(String.valueOf(5));
+
+
+
 
 	}
-    
 }

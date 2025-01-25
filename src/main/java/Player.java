@@ -9,6 +9,7 @@ public class Player {
     int totalWinnings;
     Boolean bet_set;
 
+
     public Player(){
         anteBet = 0;
         playBet = 0;
@@ -21,6 +22,7 @@ public class Player {
         anteBet = 0;
         playBet = 0;
         pairPlusBet = 0;
+    
     }
     
 }
