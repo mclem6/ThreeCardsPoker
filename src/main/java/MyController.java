@@ -13,6 +13,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
@@ -79,6 +84,9 @@ public class MyController implements Initializable{
 	BorderPane root1;
 
 	@FXML
+	BorderPane root2;
+
+	@FXML
 	ListView<String> game_info;
 
 	@FXML
@@ -131,29 +139,49 @@ public class MyController implements Initializable{
 
 	public void update_UI_result(){
 
-		    //show cards
-			update_p1_card_UI();
-			update_p2_card_UI();
+
+			//check if player 1 folded
+			if(game.p1.playBet == 0){
+				game_info.getItems().add("PLAYER 1 folded and forfeited ante and pairplus bet of " + String.valueOf(game.p1.anteBet + game.p1.pairPlusBet) + ". Player 1 loses " + String.valueOf(game.p2.anteBet + game.p2.pairPlusBet));
+
+			} else{
+				//show cards
+				update_p1_card_UI();
+
+				//updatelistview
+				game_info.getItems().add("PLAYER 1" + game.compareHands_str(game.dealer, game.p1));
+				game_info.getItems().add("Player 1 " + game.pp_result_str(game.p1));
+
+			}
+
+			//check if player 2 folded
+			if(game.p2.playBet == 0){
+				game_info.getItems().add("PLAYER 2 folded and forfeited ante and pairplus bet of " + String.valueOf(game.p2.anteBet + game.p2.pairPlusBet) + ". Player 2 loses " + String.valueOf(game.p2.anteBet + game.p2.pairPlusBet) );
+
+			} else{
+				//show cards
+				update_p2_card_UI();
+
+				//updatelistview
+				game_info.getItems().add("PLAYER 2" + game.compareHands_str(game.dealer, game.p2));
+				game_info.getItems().add("Player 2 " + game.pp_result_str(game.p2));
+
+			}
+	
 
 			//update banks
 			p1bank.setText(String.valueOf(game.p1.totalWinnings));
 			p2bank.setText(String.valueOf(game.p2.totalWinnings));
-
-
-			//wait listview
-			//comapring hands result 
-			game_info.getItems().add("PLAYER 1" + game.compareHands_str(game.dealer, game.p1));
-			game_info.getItems().add("PLAYER 2" + game.compareHands_str(game.dealer, game.p2));
-
-			//pairplus results
-			game_info.getItems().add("Player 1 " + game.pp_result_str(game.p1));
-			game_info.getItems().add("Playr 2 " + game.pp_result_str(game.p2));
 		
 
 			//wait 3 seconds
 
+			game_info.getItems().add("Press Next Round to continue");
+
 			//reset game UI
 			play_again_button.setDisable(false);
+
+
 
 
 
@@ -236,6 +264,16 @@ public class MyController implements Initializable{
 
 	}	
 
+	public void new_look(){
+
+		BackgroundImage myBI= new BackgroundImage(new Image("/images/blue_background.jpg", 1250, 1500, false, false),
+        BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        BackgroundSize.DEFAULT);
+		//then you set to your node
+		root2.setBackground(new Background(myBI));
+	
+	}
+
 	public void reset(){
 		//reset p1 buttons disable
 		bet1.setDisable(false);
@@ -275,7 +313,7 @@ public class MyController implements Initializable{
 
 
 		//update listview
-		game_info.getItems().add("game starting, select ante and pairplus the press BET");
+		game_info.getItems().add("game starting!\nSelect ante and pairplus then press BET");
 	}
 
 
@@ -283,7 +321,7 @@ public class MyController implements Initializable{
 	public void player1Bet(ActionEvent e)throws IOException{
 
 		//update 
-		game.update_p1_bet(Integer.valueOf(player1Ante.getText()), Integer.valueOf(player1PairPlus.getText()));
+		game.update_bet(game.p1, Integer.valueOf(player1Ante.getText()), Integer.valueOf(player1PairPlus.getText()));
 		
 
 		//disable bet buttons
@@ -321,7 +359,7 @@ public class MyController implements Initializable{
 		game.p1.bet_set = true;
 
 		//update player's info
-		game.p1_play_wager_made();
+		game.play_wager_made(game.p1);
 	
 
 		//check to see if p2 has selected
@@ -332,6 +370,26 @@ public class MyController implements Initializable{
 			
 			game_info.getItems().add("waiting for player 2...");
 
+		}
+
+	}
+
+	public void player1fold(){
+		
+		//disable button
+		fold1.setDisable(true);
+
+		//call player_fold to update totalwinning
+		game.player_fold(game.p1);
+
+		//set bet to true
+		game.p1.bet_set = true;
+
+		//check if p2 has bet_set
+		if(game.p2.bet_set){
+			update_UI_result();
+		}else {
+			game_info.getItems().add("waiting for player 2...");
 		}
 
 	}
@@ -376,7 +434,7 @@ public class MyController implements Initializable{
 	public void player2Bet(ActionEvent e)throws IOException{
 
 		//update 
-		game.update_p2_bet(Integer.valueOf(player2Ante.getText()), Integer.valueOf(player2PairPlus.getText()));
+		game.update_bet(game.p2, Integer.valueOf(player2Ante.getText()), Integer.valueOf(player2PairPlus.getText()));
 
 		//disable bet buttons
 		bet2.setDisable(true);
@@ -414,7 +472,7 @@ public class MyController implements Initializable{
 		game.p2.bet_set = true;
 
 		//update player's info
-		game.p2_play_wager_made();
+		game.play_wager_made(game.p2);
 
 		//check to see if p1 has selected
 		if(game.p1.bet_set){
@@ -424,6 +482,26 @@ public class MyController implements Initializable{
 			
 			game_info.getItems().add("waiting for player 1...");
 
+		}
+
+	}
+
+	public void player2fold(){
+
+		//disable button
+		fold2.setDisable(true);
+
+		//call player_fold to update totalwinning
+		game.player_fold(game.p2);
+
+		//set bet to true
+		game.p2.bet_set = true;
+
+		//check if p2 has bet_set
+		if(game.p1.bet_set){
+			update_UI_result();
+		}else {
+			game_info.getItems().add("waiting for player 1...");
 		}
 
 	}

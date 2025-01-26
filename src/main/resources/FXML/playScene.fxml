@@ -24,7 +24,7 @@
                     <items>
                         <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" text="Exit" onAction="#pressExit"/>
                         <MenuItem fx:id="freshStartMenuItem" mnemonicParsing="false" text="Fresh Start" onAction="#refresh" />
-                        <MenuItem fx:id="newLookMenuItem" mnemonicParsing="false" text="New Look" />
+                        <MenuItem fx:id="newLookMenuItem" mnemonicParsing="false" text="New Look" onAction= "#new_look"/>
                     </items>
                 </Menu>
             </menus>
@@ -58,7 +58,7 @@
             </HBox>
 
             <ListView fx:id="game_info"/>
-            <Button fx:id="play_again_button" styleClass="playWager_button" text="PLAY AGAIN" disable="true" onAction="#play_again"/>
+            <Button fx:id="play_again_button" styleClass="playWager_button" text="NEXT ROUND" disable="true" onAction="#play_again"/>
             
         </VBox>
     </center>
@@ -71,7 +71,7 @@
             <HBox spacing="5">
                 <Button fx:id = "bet1" styleClass="bet_button" text = "BET" onAction="#player1Bet"/>
                 <Button fx:id = "playWager1" styleClass="playWager_button" text = "PLAY WAGER" disable= "true" onAction= "#playwager1pressed"/>
-                <Button fx:id = "fold1" styleClass="fold_button" text = "FOLD" disable= "true"/>
+                <Button fx:id = "fold1" styleClass="fold_button" text = "FOLD" disable= "true" onAction= "#player1fold"/>
             </HBox>
             <VBox styleClass="playerOptions">    
                 <HBox spacing="5"> 
@@ -124,7 +124,7 @@
             <HBox spacing="5">
                 <Button styleClass="bet_button" fx:id = "bet2" text = "BET" onAction="#player2Bet"/>
                 <Button styleClass="playWager_button" fx:id = "playWager2" text = "PLAY WAGER" disable= "true" onAction= "#playwager2pressed"/>
-                <Button styleClass="fold_button" fx:id = "fold2" text = "FOLD" disable= "true"/>
+                <Button styleClass="fold_button" fx:id = "fold2" text = "FOLD" disable= "true" onAction= "#player2fold"/>
             </HBox>
             <VBox styleClass="playerOptions">    
                 <HBox spacing="5"> 

@@ -81,12 +81,10 @@ public class ThreeCardLogic{
                 return bet * 31;
             case 1:
                 return bet * 41;
-            default:
-                 
-                break;
+            default:    
+                return (-1 * bet);
         }
 
-        return (-1 * bet);
     }
 
 
