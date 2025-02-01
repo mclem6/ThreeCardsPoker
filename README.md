@@ -11,3 +11,4 @@
 
 <img src="/game-screenshot-2.png?raw=true" alt="screenshot of game-play" width="700" height="auto">
 
+<img src="/game-screenshot-3.png?raw=true" alt="screenshot of game-play" width="700" height="auto">
