@@ -5,4 +5,4 @@ This was a project assignment for CS 342 software design. No code was provided o
 
 All code, design, and test created by me. 
 
-![Alt text](screenshot?raw=true "Optional Title")
+![Alt text](/game-screenshot-1.png?raw=true)
