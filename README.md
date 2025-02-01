@@ -1,9 +1,14 @@
 # ThreeCardsPoker
 
-This is my first complete project
-This was a project assignment for CS 342 software design. No code was provided outside of pom file. 
+This was a project assignment for CS 342 software design. 
+Languages used: Java
+Libraries: JavaFx
+Design Pattern: MVC
 
-All code, design, and test created by me. 
 
-![screenshot of game-play](/game-screenshot-2.png?raw=true)
+
+<img src="/game-screenshot-1.png?raw=true" alt="screenshot of game-play" width="500" height="auto">
+
+
+
 ![screenshot of game-play](/game-screenshot-1.png?raw=true)
