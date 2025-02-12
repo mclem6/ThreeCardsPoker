@@ -16,5 +16,3 @@
 
 ![Screenshot 2025-02-12 at 3 07 29 PM](https://github.com/user-attachments/assets/769452c6-fead-4e62-91b8-af53acafe02b)
 
-
-![Screenshot 2025-02-12 at 3 07 49 PM](https://github.com/user-attachments/assets/045859f5-cd94-4ed8-9ebb-544040653997)
