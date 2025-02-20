@@ -5,6 +5,7 @@
 <p>Libraries: JavaFx</p>
 <p>Design Pattern: MVC</p>
 
+<img src="https://imgflip.com/tempUploads/gDS2kZIkZy8WMbqBrfrx2cravByN8Xtf_preview.mp4"/>
 
 ![Screenshot 2025-02-12 at 3 12 45 PM](https://github.com/user-attachments/assets/695a574f-edd7-4816-bc2f-94afad0ca4e6)
 
