@@ -7,16 +7,8 @@
 
 <img src="https://i.imgflip.com/9kwv08.gif"/>
 
+Starting screen where user can start game or exit.
+
 <img src="https://i.imgflip.com/9kwv7o.gif"/>
 
-
-![Screenshot 2025-02-12 at 3 12 45 PM](https://github.com/user-attachments/assets/695a574f-edd7-4816-bc2f-94afad0ca4e6)
-
-
-![Screenshot 2025-02-12 at 3 05 45 PM](https://github.com/user-attachments/assets/d438430b-5a97-4583-94d2-bfb63adbf896)
-
-
-![Screenshot 2025-02-12 at 3 06 54 PM](https://github.com/user-attachments/assets/0669a7d7-bfca-4014-8198-138ca765c146)
-
-![Screenshot 2025-02-12 at 3 07 29 PM](https://github.com/user-attachments/assets/769452c6-fead-4e62-91b8-af53acafe02b)
-
+User can change look of game with the new look option.
